@@ -16,27 +16,13 @@ import { ImageSlider } from "react-native-image-slider-banner";
 
 function DiscoveryScreen({ navigation }) {
     return (
-      <ScrollView style={{marginTop: "20%", marginLeft: "3%"}}>
-        <Text style={{fontSize: 25, fontWeight: 'bold', marginBottom: "3%", marginRight: "3%"}}>The Discovery Zone</Text>
+      <ScrollView style={{marginLeft: "3%"}}>
+        <Text style={{fontSize: 25, fontWeight: 'bold', marginBottom: "3%", marginRight: "3%", marginTop: "20%"}}>The Discovery Zone</Text>
         <Text style={{fontSize: 17, marginBottom: "30%"}}>We've been taught to recycle. Now it's time to learn to recycle correctly. Re-learn recycling basics and discover which materials are negaticvely affecting your local recycling program's performance.</Text>
 
-        <Text style={{fontSize: 22, fontWeight: 'bold', marginBottom: "3%", marginRight: "3%"}}>The Discovery Zone educational features are available to residents in Stage 4 municipalities only.</Text>
+        <Text style={{fontSize: 22, fontWeight: 'bold', marginBottom: "5%", marginRight: "3%"}}>The Discovery Zone educational features are available to residents in Stage 4 municipalities only.</Text>
 
-        <Button
-        style={{
-          borderWidth:1,
-          borderColor:'rgba(0,0,0,0.2)',
-          alignItems:'center',
-          justifyContent:'center',
-          width:100,
-          height:100,
-          backgroundColor:'#fff',
-          borderRadius:50,
-        }}
-          title="Go to Schedule"
 
-          onPress={() => navigation.navigate('Schedule')}
-        />
 
 
 <TouchableOpacity style={{backgroundColor: "#00008B", padding: 15, marginRight: "3%", borderRadius: 7}}
@@ -45,6 +31,8 @@ function DiscoveryScreen({ navigation }) {
     <Text style = {{color:'white', textAlign: "center", fontSize: 16}}>Tell me more</Text>
     </TouchableOpacity>
 
+
+    <Text style={{fontSize: 25, fontWeight: 'bold', marginBottom: "3%", marginRight: "3%", marginTop: "7%"}}>Blog</Text>
 
 <View style={{marginTop: "5%", marginRight: "3%", marginBottom: "10%"}}>
     <ImageSlider

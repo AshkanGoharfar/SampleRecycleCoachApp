@@ -58,7 +58,7 @@ function HomeScreen({ navigation }) {
   <View>
         <Text style={{justifyContent: 'flex-start', textAlign:'left',fontSize:25, fontWeight: 'bold', marginTop: "5%"}}>We Wanted to Know...</Text>
         </View>
-        <View style={{width: "90%", marginTop: "3%", backgroundColor: "white" }}>
+        <View style={{width: "100%", marginTop: "3%", backgroundColor: "white" }}>
         <CardView
   
               cardElevation={15}
