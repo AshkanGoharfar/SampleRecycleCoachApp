@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View, StyleSheet, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Searchbar } from 'react-native-paper';
+import { Searchbar, RadioButton } from 'react-native-paper';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import CardView from 'react-native-cardview'
 
 function DetailsScreen() {
   return (
-    // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <View>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Details!</Text>
     </View>
   );
@@ -21,6 +21,8 @@ function HomeScreen({ navigation }) {
 
   const onChangeSearch = query => setSearchQuery(query);
 
+  
+
 
 
 
@@ -29,19 +31,27 @@ const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
 const workout = {key: 'workout', color: 'green'};
 
 
+
+// const [checked, setChecked] = React.useState('first');
+
+const [value, setValue] = React.useState('first');
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    // <View style={styles.container}>
+    <ScrollView>
       {/* <ScrollView> */}
+      <View style={{marginLeft: "5%" ,width: "90%", marginTop: "3%" }}>
       <Searchbar
       placeholder="Search"
       onChangeText={onChangeSearch}
       value={searchQuery}
     />
+    </View>
       <View>
-      <Text style={{justifyContent: 'flex-start', textAlign:'left',fontSize:30}}>Schedule</Text>
+      <Text style={{justifyContent: 'flex-start', textAlign:'left',fontSize:25, fontWeight: 'bold', marginTop: "5%", marginLeft: "5%"}}>Schedule</Text>
       </View>
 
-      <View style={{ flex: 1, width: "90%" }}>
+      <View style={{marginLeft: "5%" ,width: "90%", marginTop: "3%" }}>
       <Calendar
   // Collection of dates that have to be marked. Default = {}
   markedDates={{
@@ -51,13 +61,55 @@ const workout = {key: 'workout', color: 'green'};
     '2022-05-19': {disabled: true, disableTouchEvent: true}
   }}
 />
-</View>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
+
+<View>
+      <Text style={{justifyContent: 'flex-start', textAlign:'left',fontSize:25, fontWeight: 'bold', marginTop: "5%"}}>We Wanted to Know...</Text>
+      </View>
+
+      <View style={{width: "90%", marginTop: "3%", backgroundColor: "white" }}>
+
+      <CardView
+
+            cardElevation={15}
+            cardMaxElevation={15}
+            cornerRadius={20}
+            cornerOverlap={false}
+          >
+
+
+
+          <Text style={{fontSize: 16, marginLeft: "5%", marginTop: "5%", marginBottom: "7%", marginRight: "5%"}}>
+              Do you use your gardening pots and planters year after year?
+          </Text>
+          <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
+      <RadioButton.Item label="Yes, I use them until they are broken" value="first" />
+      <RadioButton.Item label="Yes, but only for a few years" value="second" />
+      <RadioButton.Item label="No, I get new ones every year" value="third" />
+      <RadioButton.Item label="I never garden" value="fourth" />
+    </RadioButton.Group>
+          {/* <View>
+      <RadioButton
+        value="first"
+        status={ checked === 'first' ? 'checked' : 'unchecked' }
+        onPress={() => setChecked('first')}
+      >
+        <Text style={{marginLeft: "5%", marginTop: "3%", marginBottom: "3%", marginRight: "5%"}}>
+              Elevation 0
+          </Text>
+        </RadioButton>
+      <RadioButton
+        value="second"
+        text = "sdasdasdas"
+        status={ checked === 'second' ? 'checked' : 'unchecked' }
+        onPress={() => setChecked('second')}
       />
-      {/* </ScrollView> */}
-    </View>
+    </View> */}
+</CardView>
+
+</View>
+</View>
+<View style={{marginBottom: "7%"}}></View>
+    </ScrollView>
   );
 }
 
@@ -163,3 +215,33 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+
+
+const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1
+  },
+  container: {
+    // flex: 1
+    backgroundColor: '#EEEEEE'
+  },
+  card: {
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    flex: 1,
+    margin: 10
+  },
+  text: {
+    textAlign: 'center',
+    margin: 10,
+    height: 75
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5
+  }
+});
