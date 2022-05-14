@@ -13,15 +13,6 @@ import DiscoveryScreen from './Screens/DiscoveryScreen';
 import ScheduleScreen from './Screens/ScheduleScreen'
 
 
-// function ScheduleScreen() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Schedule!</Text>
-//     </View>
-//   );
-// }
-
-
 const HomeStack = createNativeStackNavigator();
 
 function HomeStackScreen() {
@@ -29,8 +20,6 @@ function HomeStackScreen() {
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="Schedule" component={ScheduleScreen} />
-      {/* <HomeStack.Screen name="Help" component={HelpScreen} />
-      <HomeStack.Screen name="Discovery" component={DiscoveryScreen} /> */}
     </HomeStack.Navigator>
   );
 }
@@ -42,8 +31,6 @@ function HelpStackScreen() {
     <HelpStack.Navigator>
       <HelpStack.Screen name="Help" component={HelpScreen} />
       <HelpStack.Screen name="Schedule" component={ScheduleScreen} />
-      {/* <HelpStack.Screen name="Discovery" component={DiscoveryScreen} />
-      <HelpStack.Screen name="Home" component={HomeScreen} /> */}
     </HelpStack.Navigator>
   );
 }
@@ -56,8 +43,6 @@ function DiscoveryStackScreen() {
     <DiscoveryStack.Navigator>
       <DiscoveryStack.Screen name="Discovery" component={DiscoveryScreen} />
       <DiscoveryStack.Screen name="Schedule" component={ScheduleScreen} />
-      {/* <DiscoveryStack.Screen name="Help" component={HelpScreen} /> */}
-      {/* <DiscoveryStack.Screen name="Home" component={HomeScreen} /> */}
     </DiscoveryStack.Navigator>
   );
 }

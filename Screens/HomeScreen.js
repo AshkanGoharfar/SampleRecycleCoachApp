@@ -31,6 +31,7 @@ function HomeScreen({ navigation }) {
     return (
       <ScrollView>
         {/* <ScrollView> */}
+
         <View style={{marginLeft: "5%" ,width: "90%", marginTop: "3%" }}>
         <Searchbar
         fontSize={14}
@@ -53,7 +54,7 @@ function HomeScreen({ navigation }) {
       '2022-05-19': {disabled: true, disableTouchEvent: true}
     }}
   />
-  
+
   <View>
         <Text style={{justifyContent: 'flex-start', textAlign:'left',fontSize:25, fontWeight: 'bold', marginTop: "5%"}}>We Wanted to Know...</Text>
         </View>
