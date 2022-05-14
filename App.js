@@ -6,138 +6,21 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Searchbar, RadioButton } from 'react-native-paper';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
-import CardView from 'react-native-cardview'
-
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Details!</Text>
-    </View>
-  );
-}
-
-function HomeScreen({ navigation }) {
-  const [searchQuery, setSearchQuery] = React.useState('');
-
-  const onChangeSearch = query => setSearchQuery(query);
-
-  
+import HelpScreen from './Screens/HelpScreen';
+import CardView from 'react-native-cardview';
+import HomeScreen from './Screens/HomeScreen';
+import DiscoveryScreen from './Screens/DiscoveryScreen';
+import ScheduleScreen from './Screens/ScheduleScreen'
 
 
+// function ScheduleScreen() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Schedule!</Text>
+//     </View>
+//   );
+// }
 
-
-  const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
-const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
-const workout = {key: 'workout', color: 'green'};
-
-
-
-// const [checked, setChecked] = React.useState('first');
-
-const [value, setValue] = React.useState('first');
-  return (
-    // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    // <View style={styles.container}>
-    <ScrollView>
-      {/* <ScrollView> */}
-      <View style={{marginLeft: "5%" ,width: "90%", marginTop: "3%" }}>
-      <Searchbar
-      placeholder="Search"
-      onChangeText={onChangeSearch}
-      value={searchQuery}
-    />
-    </View>
-      <View>
-      <Text style={{justifyContent: 'flex-start', textAlign:'left',fontSize:25, fontWeight: 'bold', marginTop: "5%", marginLeft: "5%"}}>Schedule</Text>
-      </View>
-
-      <View style={{marginLeft: "5%" ,width: "90%", marginTop: "3%" }}>
-      <Calendar
-  // Collection of dates that have to be marked. Default = {}
-  markedDates={{
-    '2022-05-16': {selected: true, marked: true, selectedColor: 'blue'},
-    '2022-05-17': {marked: true},
-    '2022-05-18': {marked: true, dotColor: 'red', activeOpacity: 0},
-    '2022-05-19': {disabled: true, disableTouchEvent: true}
-  }}
-/>
-
-<View>
-      <Text style={{justifyContent: 'flex-start', textAlign:'left',fontSize:25, fontWeight: 'bold', marginTop: "5%"}}>We Wanted to Know...</Text>
-      </View>
-
-      <View style={{width: "90%", marginTop: "3%", backgroundColor: "white" }}>
-
-      <CardView
-
-            cardElevation={15}
-            cardMaxElevation={15}
-            cornerRadius={20}
-            cornerOverlap={false}
-          >
-
-
-
-          <Text style={{fontSize: 16, marginLeft: "5%", marginTop: "5%", marginBottom: "7%", marginRight: "5%"}}>
-              Do you use your gardening pots and planters year after year?
-          </Text>
-          <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
-      <RadioButton.Item label="Yes, I use them until they are broken" value="first" />
-      <RadioButton.Item label="Yes, but only for a few years" value="second" />
-      <RadioButton.Item label="No, I get new ones every year" value="third" />
-      <RadioButton.Item label="I never garden" value="fourth" />
-    </RadioButton.Group>
-          {/* <View>
-      <RadioButton
-        value="first"
-        status={ checked === 'first' ? 'checked' : 'unchecked' }
-        onPress={() => setChecked('first')}
-      >
-        <Text style={{marginLeft: "5%", marginTop: "3%", marginBottom: "3%", marginRight: "5%"}}>
-              Elevation 0
-          </Text>
-        </RadioButton>
-      <RadioButton
-        value="second"
-        text = "sdasdasdas"
-        status={ checked === 'second' ? 'checked' : 'unchecked' }
-        onPress={() => setChecked('second')}
-      />
-    </View> */}
-</CardView>
-
-</View>
-</View>
-<View style={{marginBottom: "7%"}}></View>
-    </ScrollView>
-  );
-}
-
-function HelpScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Help screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-      
-    </View>
-  );
-}
-
-
-function DiscoveryScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Help screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
-  );
-}
 
 const HomeStack = createNativeStackNavigator();
 
@@ -145,7 +28,7 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Details" component={DetailsScreen} />
+      <HomeStack.Screen name="Schedule" component={ScheduleScreen} />
       {/* <HomeStack.Screen name="Help" component={HelpScreen} />
       <HomeStack.Screen name="Discovery" component={DiscoveryScreen} /> */}
     </HomeStack.Navigator>
@@ -158,7 +41,7 @@ function HelpStackScreen() {
   return (
     <HelpStack.Navigator>
       <HelpStack.Screen name="Help" component={HelpScreen} />
-      <HelpStack.Screen name="Details" component={DetailsScreen} />
+      <HelpStack.Screen name="Schedule" component={ScheduleScreen} />
       {/* <HelpStack.Screen name="Discovery" component={DiscoveryScreen} />
       <HelpStack.Screen name="Home" component={HomeScreen} /> */}
     </HelpStack.Navigator>
@@ -172,7 +55,7 @@ function DiscoveryStackScreen() {
   return (
     <DiscoveryStack.Navigator>
       <DiscoveryStack.Screen name="Discovery" component={DiscoveryScreen} />
-      <DiscoveryStack.Screen name="Details" component={DetailsScreen} />
+      <DiscoveryStack.Screen name="Schedule" component={ScheduleScreen} />
       {/* <DiscoveryStack.Screen name="Help" component={HelpScreen} /> */}
       {/* <DiscoveryStack.Screen name="Home" component={HomeScreen} /> */}
     </DiscoveryStack.Navigator>
@@ -218,6 +101,7 @@ export default function App() {
 
 
 
+
 const styles = StyleSheet.create({
   safeAreaView: {
     flex: 1
@@ -244,4 +128,8 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5
   }
-});
+}); 
+
+
+
+export{HomeScreen, HelpScreen, DiscoveryScreen, ScheduleScreen};
