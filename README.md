@@ -50,7 +50,7 @@ npm run ios
 
 
 # Context
-### How Augmented Reality in Ecommerce Can Deliver a More Enticing Shopping Experience?
+
 
 For decades, we’ve been taught that it’s better to recycle everything. But “everything we can recycle” does not mean everything can be recycled. Unlearn poor recycling habits that are contributing to high contamination and understand your role in the recycling process. Help save your local recycling program, and help your neighbors and colleagues recycle better.
 
