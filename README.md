@@ -23,7 +23,7 @@ First make sure to install React Native Version 0.68.2.
 
 Clone the repository:
 ```bash
-https://github.com/AshkanGoharfar/SampleRecycleCoachApp.git
+git clone https://github.com/AshkanGoharfar/SampleRecycleCoachApp.git
 ```
 
 Go to the project directory.
