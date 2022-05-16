@@ -7,6 +7,7 @@ import HomeScreen from './HomeScreen';
 import DiscoveryScreen from './DiscoveryScreen';
 import ScheduleScreen from './ScheduleScreen'
 import LoginScreen from './LoginScreen';
+import SearchBarComponent from "./SearchBarComponent";
 
 
 const HomeStack = createNativeStackNavigator();
@@ -27,6 +28,7 @@ function HelpStackScreen() {
     <HelpStack.Navigator>
       <HelpStack.Screen name="Help" component={HelpScreen} />
       <HelpStack.Screen name="Schedule" component={ScheduleScreen} />
+      <HelpStack.Screen name="SearchBarComponent" component={SearchBarComponent} />
     </HelpStack.Navigator>
   );
 }
@@ -80,6 +82,6 @@ const MainScreen = () => {
 
 // export default MainScreen
 
-export{HomeScreen, HelpScreen, DiscoveryScreen, ScheduleScreen, MainScreen, LoginScreen};
+export{HomeScreen, HelpScreen, DiscoveryScreen, ScheduleScreen, MainScreen, LoginScreen, SearchBarComponent};
 
 export default MainScreen

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Button, Text, View, StyleSheet, ScrollView } from 'react-native';
+// import * as React from 'react';
+import { Button, Text, View, StyleSheet, ScrollView, SafeAreaView, FlatList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -7,11 +7,106 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Searchbar, RadioButton } from 'react-native-paper';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import CardView from 'react-native-cardview'
+import React, { useState, useEffect } from 'react';
+
+// import all the components we are going to use
+import { SearchBar } from 'react-native-elements';
 
 
 
 
 function HomeScreen({ navigation }) {
+
+
+
+
+
+
+
+  const [search, setSearch] = useState('');
+  const [filteredDataSource, setFilteredDataSource] = useState([]);
+  const [masterDataSource, setMasterDataSource] = useState([]);
+
+  useEffect(() => {
+    fetch('http://82.115.16.99/trash.json')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        setFilteredDataSource("");
+        setMasterDataSource(responseJson);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const searchFilterFunction = (text) => {
+    // Check if searched text is not blank
+    if (text) {
+      // Inserted text is not blank
+      // Filter the masterDataSource
+      // Update FilteredDataSource
+      const newData = masterDataSource.filter(function (item) {
+        const itemData = item.title
+          ? item.title
+          : '';
+        const textData = text;
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilteredDataSource(newData);
+      setSearch(text);
+    } else {
+      // Inserted text is blank
+      // Update FilteredDataSource with masterDataSource
+      setFilteredDataSource(masterDataSource);
+      setSearch(text);
+    }
+    if (text === ""){
+      setFilteredDataSource("");
+    }
+    if (text === "What Goes Where? (e.g. AA batteries)"){
+      setFilteredDataSource("");
+    }
+  };
+
+  const ItemView = ({ item }) => {
+    return (
+      // Flat List Item
+      <Text style={styles.itemStyle} onPress={() => getItem(item)}>
+        {item.title}
+      </Text>
+    );
+  };
+
+  const ItemSeparatorView = () => {
+    return (
+      // Flat List Item Separator
+      <View
+        style={{
+          height: 0.5,
+          width: '100%',
+          backgroundColor: '#C8C8C8',
+        }}
+      />
+    );
+  };
+
+  const getItem = (item) => {
+    navigation.navigate('Schedule')
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const [searchQuery, setSearchQuery] = React.useState('');
   
     const onChangeSearch = query => setSearchQuery(query);
@@ -33,12 +128,33 @@ function HomeScreen({ navigation }) {
         {/* <ScrollView> */}
 
         <View style={{marginLeft: "5%" ,width: "90%", marginTop: "3%" }}>
-        <Searchbar
+        {/* <Searchbar
         fontSize={14}
         placeholder="What Goes Where? (e.g. AA batteries)"
         onChangeText={onChangeSearch}
         value={searchQuery}
-      />
+      /> */}
+
+<SearchBar
+          round
+          
+          searchIcon={{ size: 24 }}
+          containerStyle={{backgroundColor: 'white'}}
+          inputStyle={{backgroundColor: 'back'}}
+          fontSize={14}
+          lightTheme
+          placeholder="What Goes Where? (e.g. AA batteries)"
+          onChangeText={(text) => searchFilterFunction(text)}
+          onClear={(text) => searchFilterFunction('')}
+
+          value={search}
+        />
+        <FlatList
+          data={filteredDataSource}
+          keyExtractor={(item, index) => index.toString()}
+          ItemSeparatorComponent={ItemSeparatorView}
+          renderItem={ItemView}
+        />
       </View>
         <View>
         <Text style={{justifyContent: 'flex-start', textAlign:'left',fontSize:25, fontWeight: 'bold', marginTop: "5%", marginLeft: "5%"}}>Schedule</Text>
@@ -83,6 +199,17 @@ function HomeScreen({ navigation }) {
       </ScrollView>
     );
   }
+
+
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: '#D3D3D3',
+    },
+    itemStyle: {
+      padding: 10,
+    },
+  });
+  
   
 
 
