@@ -56,3 +56,12 @@ const styles = StyleSheet.create({
 
 
 export{HomeScreen, HelpScreen, DiscoveryScreen, ScheduleScreen, MainScreen, LoginScreen, TrashDetailsScreen};
+
+
+
+
+
+
+
+
+
