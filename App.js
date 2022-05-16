@@ -8,13 +8,14 @@ import DiscoveryScreen from './Screens/DiscoveryScreen';
 import ScheduleScreen from './Screens/ScheduleScreen'
 import LoginScreen from './Screens/LoginScreen';
 import MainScreen from './Screens/MainScreen';
+import TrashDetailsScreen from './Screens/TrashDetailsScreen';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen options={{headerShown: false}} name="Login" component={LoginScreen} />
+        {/* <Stack.Screen options={{headerShown: false}} name="Login" component={LoginScreen} /> */}
         <Stack.Screen options={{headerShown: false}} name="Main" component={MainScreen} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -54,4 +55,4 @@ const styles = StyleSheet.create({
 
 
 
-export{HomeScreen, HelpScreen, DiscoveryScreen, ScheduleScreen, MainScreen, LoginScreen};
+export{HomeScreen, HelpScreen, DiscoveryScreen, ScheduleScreen, MainScreen, LoginScreen, TrashDetailsScreen};

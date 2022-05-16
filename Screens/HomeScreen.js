@@ -11,17 +11,12 @@ import React, { useState, useEffect } from 'react';
 
 // import all the components we are going to use
 import { SearchBar } from 'react-native-elements';
+import 'localstorage-polyfill'
 
 
 
 
 function HomeScreen({ navigation }) {
-
-
-
-
-
-
 
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
@@ -91,32 +86,16 @@ function HomeScreen({ navigation }) {
   };
 
   const getItem = (item) => {
-    navigation.navigate('Schedule')
+    localStorage.setItem('trash', JSON.stringify(item))
+    navigation.navigate('Trash Details')
   };
 
 
+  const [searchQuery, setSearchQuery] = React.useState('');
 
+  const onChangeSearch = query => setSearchQuery(query);
 
-
-
-
-
-
-
-
-
-
-
-    const [searchQuery, setSearchQuery] = React.useState('');
-  
-    const onChangeSearch = query => setSearchQuery(query);
-  
-    
-  
-  
-  
-  
-    const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
+  const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
   const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
   const workout = {key: 'workout', color: 'green'};
   

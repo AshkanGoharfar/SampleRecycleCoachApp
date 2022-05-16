@@ -8,6 +8,7 @@ import DiscoveryScreen from './DiscoveryScreen';
 import ScheduleScreen from './ScheduleScreen'
 import LoginScreen from './LoginScreen';
 import SearchBarComponent from "./SearchBarComponent";
+import TrashDetailsScreen from "./TrashDetailsScreen";
 
 
 const HomeStack = createNativeStackNavigator();
@@ -17,6 +18,7 @@ function HomeStackScreen() {
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="Schedule" component={ScheduleScreen} />
+      <HomeStack.Screen name="Trash Details" component={TrashDetailsScreen} />
     </HomeStack.Navigator>
   );
 }
@@ -82,6 +84,6 @@ const MainScreen = () => {
 
 // export default MainScreen
 
-export{HomeScreen, HelpScreen, DiscoveryScreen, ScheduleScreen, MainScreen, LoginScreen, SearchBarComponent};
+export{HomeScreen, HelpScreen, DiscoveryScreen, ScheduleScreen, MainScreen, LoginScreen, SearchBarComponent, TrashDetailsScreen};
 
 export default MainScreen
